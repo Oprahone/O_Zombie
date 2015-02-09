@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 09 Février 2015 à 14:00
+-- Généré le :  Lun 09 Février 2015 à 15:09
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `data` (
   `caserne_lvl1_z_ao` int(11) NOT NULL,
   `caserne_lvl1_z_e` int(11) NOT NULL,
   `caserne_lvl1_z_c` int(11) NOT NULL,
+  `caserne_lvl1_vit` int(11) NOT NULL,
   `caserne_lvl2_z_b` int(11) NOT NULL,
   `caserne_lvl2_z_ao` int(11) NOT NULL,
   `caserne_lvl2_z_e` int(11) NOT NULL,
@@ -94,6 +95,33 @@ CREATE TABLE IF NOT EXISTS `data` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `data_0`
+--
+
+CREATE TABLE IF NOT EXISTS `data_0` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `caserne_lvl1_z_b` int(11) NOT NULL,
+  `caserne_lvl1_vit` int(11) NOT NULL,
+  `abattoir_lvl1_mdv` int(11) NOT NULL,
+  `z_b_lvl1_mdv` int(11) NOT NULL,
+  `z_b_lvl1_att` int(11) NOT NULL,
+  `z_b_lvl1_def` int(11) NOT NULL,
+  `z_b_lvl1_pv` int(11) NOT NULL,
+  `z_b_lvl1_vit` int(11) NOT NULL,
+  `z_b_lvl1_mov` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `data_0`
+--
+
+INSERT INTO `data_0` (`id`, `caserne_lvl1_z_b`, `caserne_lvl1_vit`, `abattoir_lvl1_mdv`, `z_b_lvl1_mdv`, `z_b_lvl1_att`, `z_b_lvl1_def`, `z_b_lvl1_pv`, `z_b_lvl1_vit`, `z_b_lvl1_mov`) VALUES
+(1, 10, 10, 10, 10, 10, 1, 100, 10, 10);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `ressources`
 --
 
@@ -114,7 +142,15 @@ CREATE TABLE IF NOT EXISTS `ressources` (
   `z_cracheur` int(11) NOT NULL,
   `z_mastodonte` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `ressources`
+--
+
+INSERT INTO `ressources` (`id`, `r_humain`, `r_meat`, `r_os`, `r_bile`, `b_crypt`, `b_labo`, `b_abattoire`, `b_desosseur`, `b_usine`, `z_basique`, `z_enos`, `z_explosif`, `z_cracheur`, `z_mastodonte`) VALUES
+(1, 0, 100, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 0, 100, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -127,9 +163,16 @@ CREATE TABLE IF NOT EXISTS `userdata` (
   `nom` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
-  `ref` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `userdata`
+--
+
+INSERT INTO `userdata` (`id`, `nom`, `email`, `password`) VALUES
+(1, 'thomas', 'good@rzie', 'osef'),
+(2, 'levani', 'kvali@shvili', 'osef');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
