@@ -1,11 +1,13 @@
 <?php
+
 require_once ("modele/connect_bd.php");
 require_once ("vue/affichage.php");
+
 function inscrire () {
      	
 	if (count($_POST)==0 || count($_POST)==1 || count($_POST)==2) {
 		
-		$_SESSION ['error'] = true;
+		$mess = 'Veuillez remplir TOUS les champs';
 		aff_acc();
              
      }
@@ -29,8 +31,8 @@ function inscrire () {
 function connexion () {
      
 	if (count ($_POST) == 0 || count($_POST)==1) {
-		$_SESSION ['error'] = true;
-		aff_acc();     
+		$mess = 'Veuillez remplir TOUS les champs';
+		aff_page ($login);     
 		
 	}
 	
@@ -40,15 +42,21 @@ function connexion () {
 	    $pass = $_POST['pass'];
 	    
 	    if (verifAut_format($login,$pass) && verif_bd($login,$pass)) {
-	         
+	     
 	         $_SESSION ['c'] = connexion ();
 	         
+	         if !($_SESSION ['c']) {
+	         	
+	         	$mess = "Vous n'etespas inscrit";
+	         	
 	    }
 	    
-         else $_SESSION ['error'] = true;
+         else $mess = 'Veuillez réessayer';
      
      }
+     
 }
+
 function verifAut_format($nom,$pass,$mail) {
      
 	$mod_nom="`^([[:alnum:]]|[\-]){1,10}$`";
