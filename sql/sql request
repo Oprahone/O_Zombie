@@ -1,0 +1,51 @@
+$click = count action(pour les unité)
+select info
+if (action==0){
+     if ($row[caserne]<1){
+          if ($row[zombie_count]>=10){
+               actions=1
+               while(action>0){
+                    $date = date()+30
+                    update bdd($date)
+                    if (date()>=$date) {
+                         update bdd(crea)
+                         action =action-1
+                   }
+               }
+           }
+      }
+}
+
+//debut de page pur refresh
+$ressource_time = date()
+update bdd($ressource_time)
+
+
+on click
+select ressource_time
+$ressource_time = date()
+$count_time= $ressource_time-$row[ressource_time]
+$counter=$count_time/10sec
+$add_meat=$counter*LVLABA
+select meat all
+for var i=0, i<sizeof($row),i++
+$formeat = $row[meat]+$add_meat
+udpate ($formeat)
+
+
+select army A
+select army B
+select info army
+$armyAhp = ($row[hp]*$row[zombi])
+$armyAtt = ($row[hp]*$row[att])
+$armydef = ($row[hp]*$row[def])
+$armyBhp = ($row[hp]*$row[zombi])
+$armyBatt = ($row[hp]*$row[att])
+$armyBdef = ($row[hp]*$row[def])
+
+$survA=$armyBhp-($armyAatt-$armyBdef)
+$survB=$armyAhp-($armyBatt-$armyAdef)
+$RArmyA=$survA/$row[hp]
+$RArmyB=$survB/$row[hp]
+update(armyA)
+update(armyB)
